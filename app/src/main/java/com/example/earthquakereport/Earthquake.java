@@ -1,14 +1,14 @@
 package com.example.earthquakereport;
 
 public class Earthquake {
-    public Earthquake(String date, double magnitude, String location)
+    public Earthquake(String magnitude, String location, String date)
     {
         this.date = date;
         this.magnitude = magnitude;
         this.location = location;
     }
 
-    public double getMagnitude(){
+    public String getMagnitude(){
         return magnitude;
     }
 
@@ -20,7 +20,7 @@ public class Earthquake {
         return date;
     }
 
-    private double magnitude;
+    private String magnitude;
     private String location;
     private String date;
 }

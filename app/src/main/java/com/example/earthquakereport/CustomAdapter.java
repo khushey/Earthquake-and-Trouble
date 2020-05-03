@@ -41,10 +41,7 @@ public class CustomAdapter extends ArrayAdapter {
         TextView date = (TextView) convertView.findViewById(R.id.date);
 
         date.setText(earthquakeList.get(position).getDate());
-
-        double_magnitude = earthquakeList.get(position).getMagnitude();
-        string_magnitude = double_magnitude.toString();
-        magnitude.setText(string_magnitude);
+        magnitude.setText(earthquakeList.get(position).getMagnitude());
         location.setText(earthquakeList.get(position).getLocation());
 
         return convertView;

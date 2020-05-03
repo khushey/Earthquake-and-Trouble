@@ -1,26 +1,47 @@
 package com.example.earthquakereport;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Earthquake {
-    public Earthquake(String magnitude, String location, String date)
+
+    private Date dateObject;
+    private SimpleDateFormat dateFormatter;
+    private DecimalFormat decimalFormatter;
+    private Double magnitude;
+    private String location;
+    private String date;
+    private String time;
+
+
+    public Earthquake(Double magnitude, String location, Long timeInMilliseconds)
     {
-        this.date = date;
+        dateObject = new Date(timeInMilliseconds);
         this.magnitude = magnitude;
         this.location = location;
     }
 
     public String getMagnitude(){
-        return magnitude;
+        decimalFormatter = new DecimalFormat("0.0");
+        return decimalFormatter.format(magnitude);
     }
 
     public String getLocation(){
         return location;
     }
 
-    public String getDate(){
+    public String fotmatDate(){
+        dateFormatter = new SimpleDateFormat("MMM DD, YYYY");
+        date = dateFormatter.format(dateObject);
         return date;
     }
 
-    private String magnitude;
-    private String location;
-    private String date;
+    public String formatTime(){
+        dateFormatter = new SimpleDateFormat("h:mm a");
+        time = dateFormatter.format(dateObject);
+        return time;
+    }
+
+
 }

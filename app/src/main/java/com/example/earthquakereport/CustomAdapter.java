@@ -18,10 +18,6 @@ public class CustomAdapter extends ArrayAdapter {
     private final String TAG = "CustomAdapter";
     private Context context;
     private List<Earthquake> earthquakeList;
-    private Double double_magnitude;
-    private String string_magnitude;
-    private Date date_;
-    private String dateInString;
 
     public CustomAdapter(Context context, int resource, List objects) {
 
@@ -38,11 +34,32 @@ public class CustomAdapter extends ArrayAdapter {
 
         TextView magnitude = (TextView) convertView.findViewById(R.id.magnitude);
         TextView location = (TextView) convertView.findViewById(R.id.location);
-        TextView date = (TextView) convertView.findViewById(R.id.date);
 
-        date.setText(earthquakeList.get(position).getDate());
+
+
+        TextView date = (TextView) convertView.findViewById(R.id.date);
+        TextView time = (TextView )convertView.findViewById(R.id.time);
+
+        time.setText(earthquakeList.get(position).formatTime());
+        date.setText(earthquakeList.get(position).fotmatDate());
         magnitude.setText(earthquakeList.get(position).getMagnitude());
-        location.setText(earthquakeList.get(position).getLocation());
+
+        String offset, primaryLoc;
+        String locArray[] = earthquakeList.get(position).getLocation().split("of", 2);
+
+        if (locArray.length == 2)
+        {
+            offset = locArray[0];
+            primaryLoc = locArray[1];
+            Log.d(TAG, offset + ":" + primaryLoc);
+        }
+        else if (locArray.length == 1)
+        {
+            offset = "Near the";
+            primaryLoc = locArray[0];
+            Log.d(TAG, offset + " " + primaryLoc);
+        }
+
 
         return convertView;
     }

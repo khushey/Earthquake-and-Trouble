@@ -16,15 +16,17 @@ import java.util.List;
 
 public class EarthquakeActivity extends AppCompatActivity {
 
-    private static final String TAG = "EarthquakeActivity";
+    private static final String TAG = "MainActivity";
     EarthquakeAsyncTask earthquakeAsyncTask = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_earthquake);
 
+
         earthquakeAsyncTask = new EarthquakeAsyncTask(asyncResponse, this);
         earthquakeAsyncTask.execute();
+
     }
 
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
@@ -42,10 +44,11 @@ public class EarthquakeActivity extends AppCompatActivity {
         //this function will be called in the onPostExecute() method in earthquakeAsynkTask.
         @Override
         public void processCompleted() {
-            Log.d(TAG, "Inside Main Activity; process completed");
+            Log.d("EarthquakeActivity", "Inside Main Activity; process completed");
             ListView listView =  (ListView) findViewById(R.id.earthquake_list);
             earthquakeAsyncTask.setAdapter(listView);
             listView.setOnItemClickListener(onItemClickListener);
         }
     };
+
 }

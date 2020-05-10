@@ -27,7 +27,7 @@ public class EarthquakeAsyncTask extends AsyncTask<URL, Void, List<Earthquake>> 
 
     public static final String TAG = "EarthquakeAsyncTask";
     private static final String USGS_REQUEST_URL =
-            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=4";
+            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=1";
 //           "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-12-01&minmagnitude=5.5";
     private String jsonResponse = "";
     private Context context;
@@ -48,6 +48,7 @@ public class EarthquakeAsyncTask extends AsyncTask<URL, Void, List<Earthquake>> 
 
         try{
             jsonResponse = makeHttpRequest(url);
+            Log.d("MainActivity", "Inside doInBackground");
         }
         catch (IOException exception){
         }
@@ -67,7 +68,6 @@ public class EarthquakeAsyncTask extends AsyncTask<URL, Void, List<Earthquake>> 
         URL url = null;
         try{
             url = new URL(stringUrl);
-            Log.d(TAG, "url");
         }
         catch(MalformedURLException exception){
             return null;

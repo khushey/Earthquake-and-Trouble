@@ -37,7 +37,6 @@ public class CustomAdapter extends ArrayAdapter {
 
         this.context = context;
         this.earthquakeList = objects;
-        Log.d(TAG, "Got in here");
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -110,7 +109,6 @@ public class CustomAdapter extends ArrayAdapter {
                 default:
                     magCircle.setTint(ContextCompat.getColor(getContext(), R.color.magnitude1));
         }
-        Log.d(TAG, "All may be well in CustomAdapter");
         return convertView;
     }
 }

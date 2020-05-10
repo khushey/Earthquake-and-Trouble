@@ -53,6 +53,4 @@ public class Earthquake {
         time = dateFormatter.format(dateObject);
         return time;
     }
-
-
 }
